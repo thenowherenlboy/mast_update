@@ -2,9 +2,10 @@
   "name": "mast_update",
   "version": "1.0.0",
   "description": "MAST site refactor",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+     "start" : "node src/app.js",
+     "dev" : "nodemon src/app.js -e js, hbs"
   },
   "repository": {
     "type": "git",
@@ -16,10 +17,18 @@
     "Teacher",
     "Education"
   ],
-  "author": "Harley M. Dickson",
+  "author": "H. M. Dickson",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/thenowherenlboy/mast_update/issues"
   },
-  "homepage": "https://github.com/thenowherenlboy/mast_update#readme"
+  "homepage": "https://github.com/thenowherenlboy/mast_update#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.0.4",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
 }
