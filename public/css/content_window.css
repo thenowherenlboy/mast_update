@@ -1,0 +1,18 @@
+#container {
+    background-color: white;
+    color: black;
+    min-width: 800px;
+	overflow-y: auto;
+	border: 3px solid #868686;
+	border-radius: 17px;
+	padding: 20px 40px;
+    font-family: Helvetica,Verdana, Arial, sans-serif;
+    text-align: left;
+	font-size: 14px;
+    line-height: 16px;
+}
+
+#container h1 {
+    color: #868686;
+    font: 18px/1.2 normal Helvetic,Verdana,Arial,sans-serif;
+}

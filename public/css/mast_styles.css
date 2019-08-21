@@ -3,3 +3,8 @@ body {
     color: #000;
     font: 12pt normal "Times New Roman", Times, serif
 }
+h1 {
+    font: 20pt/1.2 normal Helvetica,Verdana,Arial,sans-serif;
+    text-align: left
+}
+
