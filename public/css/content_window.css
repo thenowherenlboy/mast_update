@@ -3,11 +3,11 @@
     color: black;
     min-width: 800px;
 	overflow-y: auto;
-	border: 3px solid #868686;
+    border: 3px solid #868686;
+    text-align: left;
 	border-radius: 17px;
 	padding: 20px 40px;
     font-family: Helvetica,Verdana, Arial, sans-serif;
-    text-align: left;
 	font-size: 14px;
     line-height: 16px;
 }

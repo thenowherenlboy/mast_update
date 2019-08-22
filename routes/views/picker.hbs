@@ -3,10 +3,31 @@
 <html>
     <head>
         <link rel="stylesheet" href="css/mast_styles.css" />
+        <link rel="stylesheet" href="css/content_window.css" />
+
+        <script>
+            var hbs = require('hbs');
+           var context = {
+               title: 'Sum title',
+               id: 'bunch of numbers',
+               units: 'empirial'
+           } 
+           hbs.registerHelper('getTitle', function(context) {
+               return context.title;
+           });
+
+
+
+        </script>
+
+
     </head>
     <body>
         {{>header}}
-        {{>main_content}}
+        <div id="container">
+            {{getTitle context}}
+            
+        </div> 
         {{>footer}}
     </body>
 </html>

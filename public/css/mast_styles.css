@@ -8,3 +8,15 @@ h1 {
     text-align: left
 }
 
+footer {
+    position: relative;
+    margin-top: 7%;
+    margin-bottom: 10%;
+}
+
+.centered {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+

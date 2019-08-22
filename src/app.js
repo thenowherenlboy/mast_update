@@ -3,6 +3,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const utils = require('./utils');
+
 const viewPath = path.join(__dirname, '../routes/views/');
 const partialsPath = path.join(__dirname,'../routes/partials/');
 
@@ -27,15 +29,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/picker', (req, res) => {
+    
     res.render('picker' , {
-        title: 'Module Selector'
+        title: 'Module Picker'
     });
+    
 });
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: 'About MAST',
-        content: getContent('src/contents/about.html') 
+        title: 'About MAST'
     });
 });
 
@@ -51,18 +54,6 @@ app.get('/map', (req, res) => {
     });
 });
 
-function getContent(url) {
-    var body = fs.createReadStream(url);
-    body.on('readable', function() {
-        var result = '';
-        var data;
-        while (data = this.read()){
-            //console.log(data.toString());
-            result += data.toString();
-        }
-        return result; 
-    });
-}
 app.listen(port, () => {
     console.log('Server up on port ' + port);
 });
