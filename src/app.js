@@ -3,7 +3,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
-const utils = require('./utils');
+const  {getContent} = require('./utils');
 
 const viewPath = path.join(__dirname, '../routes/views/');
 const partialsPath = path.join(__dirname,'../routes/partials/');
@@ -29,9 +29,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/picker', (req, res) => {
-    
+    const content =  getContent();
     res.render('picker' , {
-        title: 'Module Picker'
+        title: 'Module Picker',
+        content: content
     });
     
 });
