@@ -3,26 +3,13 @@ const path = require('path');
 
 const modPath = '../public/modules/';
 
-const getContent =  function() {
-    var col1 = 'something\n';
-    var col2 = '';
-    var col3 = '';
-
-    fs.readdirSync('U:\\Mast_update\\public\\modules', (err, files) => {
-        if(err) {
-            console.log(err.message);
-            return;
-        }
-        files.forEach(file => {
-            col1 += file + '\n';
-            console.log(file);
-        });
-        console.log(col1);
-    });
+const getContent = function() {
+    var dirs = __dirname;
+    var notDirs = 'what the what and stuff, can i haz a cooky?'
 
     retObj = {
-        col1,
-        col2,
+        col1: dirs,
+        col2: notDirs,
         col3: '..no..'
     }
     return retObj;

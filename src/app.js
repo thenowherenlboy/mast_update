@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/picker', (req, res) => {
-    const content =  getContent();
+    const content = getContent();
     res.render('picker' , {
         title: 'Module Picker',
         content: content

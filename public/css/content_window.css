@@ -2,6 +2,8 @@
     background-color: white;
     color: black;
     min-width: 600px;
+    margin-left:40px;
+    margin-right:40px;
 	overflow-y: auto;
     border: 3px solid #868686;
     text-align: left;
