@@ -1,7 +1,11 @@
 body {
+    min-height:850px;
     text-align: center;
     color: #000;
-    font: 12pt normal "Times New Roman", Times, serif
+    font: 12pt normal "Times New Roman", Times, serif;
+    background-image: url("../img/pirateship_sketch.jpeg");
+    background-attachment: fixed;
+    background-repeat: none;
 }
 h1 {
     font: 20pt/1.2 normal Helvetica,Verdana,Arial,sans-serif;
@@ -9,9 +13,14 @@ h1 {
 }
 
 footer {
-    position: relative;
-    margin-top: 7%;
-    margin-bottom: 10%;
+    padding-top:10px;
+    border-radius:10px;
+    background: #fff;
+    height: 90px;
+    width:600px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .centered {

@@ -1,7 +1,7 @@
 #container {
     background-color: white;
     color: black;
-    min-width: 800px;
+    min-width: 600px;
 	overflow-y: auto;
     border: 3px solid #868686;
     text-align: left;

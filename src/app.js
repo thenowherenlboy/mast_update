@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
-const fs = require('fs');
+const serveIndex = require('serve-index');
 
 const  {getContent} = require('./utils');
 
@@ -18,7 +18,7 @@ hbs.registerPartials(partialsPath);
 
 // static files
 
-app.use(express.static(path.join(__dirname, '../public/')));
+ app.use(express.static(path.join(__dirname, '../public/')));
 
 // routes
 
