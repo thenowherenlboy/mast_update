@@ -1,7 +1,9 @@
 #container {
-    background-color: white;
+    background-color: #fff;
     color: black;
-    min-width: 600px;
+    min-width: 800px;
+    height: 500px;
+    overflow-y: auto;
     margin-left:40px;
     margin-right:40px;
 	overflow-y: auto;

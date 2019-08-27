@@ -5,7 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js -e js,hbs,css"
+    "dev": "nodemon src/app.js"
   },
   "repository": {
     "type": "git",
@@ -24,8 +24,10 @@
   },
   "homepage": "https://github.com/thenowherenlboy/mast_update#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "hbs": "^4.0.4",
+    "jsdom": "^15.1.1",
     "request": "^2.88.0",
     "serve-index": "^1.9.1"
   },

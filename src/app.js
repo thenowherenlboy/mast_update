@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
-const serveIndex = require('serve-index');
+const cors = require('cors');
 
 const  {getContent} = require('./utils');
 
@@ -9,6 +9,8 @@ const viewPath = path.join(__dirname, '../routes/views/');
 const partialsPath = path.join(__dirname,'../routes/partials/');
 
 const app = express();
+
+app.use(cors());
 
 const port = process.env.PORT || 3000;
 

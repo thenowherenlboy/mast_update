@@ -3,10 +3,20 @@ body {
     text-align: center;
     color: #000;
     font: 12pt normal "Times New Roman", Times, serif;
+    background: url("../img/colorsBg.png");
+}
+body div#super {
+    border-radius: 10px;
     background-image: url("../img/pirateship_sketch.jpeg");
     background-attachment: fixed;
-    background-repeat: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width:988px;
+    height: 800px;
+    margin: 15px auto;
+    padding: 5px;
 }
+
 h1 {
     font: 20pt/1.2 normal Helvetica,Verdana,Arial,sans-serif;
     text-align: left
