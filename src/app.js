@@ -34,12 +34,12 @@ app.get('/picker', (req, res) => {
     var title;
     var content; 
 
-    if (!req.query.folder) {
-        content = getContent('../public/modules/');
+    if (!req.query.folder) {  // base module directory
+        content = getContent('../public/modules/','');
         title = 'Module Selector';
     } else {
-       var sub = req.query.folder;
-       content = getContent('../public/modules/' + sub + '/');
+       var sub = req.query.folder + '/';
+       content = getContent('../public/modules/' + sub,sub);
        title = sub.toUpperCase();
     } 
 
