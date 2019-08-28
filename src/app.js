@@ -3,7 +3,7 @@ const express = require('express');
 const hbs = require('hbs');
 const cors = require('cors');
 
-const  {getContent} = require('./utils');
+const  { getContent } = require('./utils');
 
 const viewPath = path.join(__dirname, '../routes/views/');
 const partialsPath = path.join(__dirname,'../routes/partials/');
@@ -31,10 +31,21 @@ app.get('/', (req, res) => {
 });
 
 app.get('/picker', (req, res) => {
-    const content = getContent();
+    var title;
+    var content; 
+
+    if (!req.query.folder) {
+        content = getContent('../public/modules/');
+        title = 'Module Selector';
+    } else {
+       var sub = req.query.folder;
+       content = getContent('../public/modules/' + sub + '/');
+       title = sub.toUpperCase();
+    } 
+
     res.render('picker' , {
-        title: 'Module Picker',
-        content: content
+        title,
+        content
     });
     
 });
@@ -60,6 +71,3 @@ app.get('/map', (req, res) => {
 app.listen(port, () => {
     console.log('Server up on port ' + port);
 });
-
-
-
