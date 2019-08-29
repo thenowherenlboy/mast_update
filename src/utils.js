@@ -8,18 +8,18 @@ const normDir = __dirname.replace(/[\\]/g,'/') + '/'; // fixes Window's backslas
 
 const getContent = function(modPath, subPath) {
 
-    console.log(modPath);
-    console.log(normDir);
+    // console.log(modPath);
+    // console.log(normDir);
     var modsHtml = '<ul>';
     var catHtml = '<ul>';
-    var bookHtml = '<ol>';
+    var bookHtml = '<ul>';
 
     var mods = [];
     var cats = [];
     var books = [];
 
     var files = fs.readdirSync(normDir +'/' + modPath, {withFileTypes: true }).filter((dirent) => {
-        console.log(dirent.name);
+        // console.log(dirent.name);
         if(dirent.isDirectory()) {
            if(fs.existsSync(normDir + modPath + dirent.name + '/index.html')) {
                mods.push(dirent.name);
@@ -48,7 +48,7 @@ const getContent = function(modPath, subPath) {
     catHtml += '</ul>';
 
     bookHtml += getFiles(books,'.ibooks',subPath);
-    bookHtml += '</ol>';
+    bookHtml += '</ul>';
 
     retObj = {
         col1: catHtml,

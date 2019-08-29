@@ -33,6 +33,18 @@ footer {
     margin-right: auto;
 }
 
+footer a:link, a:visited {
+    color:black;
+    background-color: white;
+    text-decoration: underline;
+}
+
+footer a:hover, a:active {
+    color:white;
+    background-color:black;
+    text-decoration: none;
+}
+
 .centered {
     text-align: center;
     margin-right: auto;

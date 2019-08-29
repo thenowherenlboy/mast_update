@@ -63,11 +63,13 @@ app.get('/terms', (req, res) => {
     });
 });
 
-app.get('/map', (req, res) => {
-    res.render('map', {
-        title: 'Site Map'
-    });
-});
+// uh... need to work on the map page a bit :(
+
+// app.get('/map', (req, res) => {
+//     res.render('map', {
+//         title: 'Site Map'
+//     });
+// });
 
 app.listen(port, () => {
     console.log('Server up on port ' + port);
