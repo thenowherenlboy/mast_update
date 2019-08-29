@@ -78,7 +78,7 @@ function getFiles(directory, entryPoint, subPath) {
             var outPath;
             if (subPath !== '') {
                 outPath = modFolder + subPath + path.posix.basename(file)
-            }else {
+            } else {
                 outPath = modFolder + path.posix.basename(file);
             }
            out +=  `<li><a href="${outPath}.ibooks" download>${path.posix.basename(file)}</a></li>`;

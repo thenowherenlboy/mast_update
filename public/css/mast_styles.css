@@ -1,20 +1,19 @@
 body {
-    min-height:850px;
+    min-height:90%;
     text-align: center;
     color: #000;
     font: 12pt normal "Times New Roman", Times, serif;
     background: url("../img/colorsBg.png");
 }
 body div#super {
-    border-radius: 10px;
+    border-radius: 1em;
     background-image: url("../img/pirateship_sketch.jpeg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    width:988px;
-    height: 800px;
-    margin: 15px auto;
-    padding: 5px;
+    width:95%;
+    margin: 2% auto;
+    padding: 1%;
 }
 
 h1 {
@@ -26,11 +25,9 @@ footer {
     padding-top:10px;
     border-radius:10px;
     background: #fff;
-    height: 90px;
-    width:600px;
-    margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
+    height: 10%; 
+    width: 80%;
+    margin: 2% auto;
 }
 
 footer a:link, a:visited {
