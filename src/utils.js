@@ -75,12 +75,22 @@ function getFiles(directory, entryPoint, subPath) {
         });
     } else if (entryPoint === '.ibooks') {
         directory.forEach((file) => {
-            var outPath = modFolder + path.posix.basename(file);
+            var outPath;
+            if (subPath !== '') {
+                outPath = modFolder + subPath + path.posix.basename(file)
+            }else {
+                outPath = modFolder + path.posix.basename(file);
+            }
            out +=  `<li><a href="${outPath}.ibooks" download>${path.posix.basename(file)}</a></li>`;
         });
     } else {
         directory.forEach((file) => {
-            out += `<li><a href="/picker?folder=${file}">${file}</a></li> `;
+            if (subPath !== '') {
+                out += `<li><a href="/picker?folder=${subPath}/${file}/">${file}</a></li> `;
+            } else {
+                out += `<li><a href="/picker?folder=${file}">${file}</a></li> `;
+            }
+            
         });
     }
     
