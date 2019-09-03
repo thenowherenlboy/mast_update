@@ -18,7 +18,7 @@ const getContent = function(modPath, subPath) {
     var cats = [];
     var books = [];
 
-    var files = fs.readdirSync(normDir +'/' + modPath, {withFileTypes: true }).filter((dirent) => {
+    fs.readdirSync(normDir +'/' + modPath, {withFileTypes: true }).filter((dirent) => {
         // console.log(dirent.name);
         if(dirent.isDirectory()) {
            if(fs.existsSync(normDir + modPath + dirent.name + '/index.html')) {
@@ -43,8 +43,7 @@ const getContent = function(modPath, subPath) {
     modsHtml += getFiles(mods,'index.html', subPath); 
     modsHtml += '</ul>';
 
-    
-    catHtml += getFiles(cats,'', subPath);
+    catHtml += getFiles(cats,'', subPath); 
     catHtml += '</ul>';
 
     bookHtml += getFiles(books,'.ibooks',subPath);
@@ -58,42 +57,24 @@ const getContent = function(modPath, subPath) {
     return retObj;
 };
 
-function getFiles(directory, entryPoint, subPath) {
-    let out = '';   
 
-    if (entryPoint === 'index.html') {
-        directory.forEach((file) => {
-            var outPath;
-             if (subPath !== '') {
-                 outPath = modFolder + subPath + path.posix.basename(file);
-             } else {
-                 outPath = modFolder + path.posix.basename(file);
-             }
-            // console.log(outPath);
+function getFiles(directory, entryPoint, subPath) {
+    let out = '';  
+    let outPath = ''; 
+
+    directory.forEach((file) => {
+        if(entryPoint === 'index.html') {
+            outPath += modFolder + subPath + path.posix.basename(file);
             outPath = outPath.replace(/\s/g,'%20');
-            out += `<li><a href="${outPath}/${entryPoint}">${path.posix.basename(file)}</a></li>`;                
-        });
-    } else if (entryPoint === '.ibooks') {
-        directory.forEach((file) => {
-            var outPath;
-            if (subPath !== '') {
-                outPath = modFolder + subPath + path.posix.basename(file)
-            } else {
-                outPath = modFolder + path.posix.basename(file);
-            }
-           out +=  `<li><a href="${outPath}.ibooks" download>${path.posix.basename(file)}</a></li>`;
-        });
-    } else {
-        directory.forEach((file) => {
-            if (subPath !== '') {
-                out += `<li><a href="/picker?folder=${subPath}/${file}/">${file}</a></li> `;
-            } else {
-                out += `<li><a href="/picker?folder=${file}">${file}</a></li> `;
-            }
-            
-        });
-    }
-    
+            out +=  `<li><a href="${outPath}/${entryPoint}">${path.posix.basename(file)}</a></li>`; 
+        } else if (entryPoint === '.ibooks') {
+            outPath += modFolder + subPath + path.posix.basename(file);
+            out +=   `<li><a href="${outPath}.ibooks" download>${path.posix.basename(file)}</a></li>`;
+        } else {
+             out += `<li><a href="/picker?folder=${subPath}/${file}/">${file}</a></li> `;
+        }
+    });
+
     return out;
 }
 

@@ -4,18 +4,16 @@
     <head>
         <link rel="stylesheet" href="css/mast_styles.css" />
         <link rel="stylesheet" href="css/content_window.css" />
-        <meta name="viewport" content="width-device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     </head>
-    <body><div id="super">
-        {{>header}}
-        <div id="container">
-           
-            {{>main_content}}            
-            <a id="modHome" href="/picker">Module Home</a>
-            <a id="home" href="/">MAST Home</a>
-        </div> 
-        {{>footer}}
+    <body>
+        <div id="super">
+            {{>header}}
+            <div id="container">           
+                {{>main_content}}
+            </div> 
+            {{>footer}}
     </div>
     </body>
 </html>
