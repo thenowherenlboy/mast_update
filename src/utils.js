@@ -2,21 +2,21 @@ const fs = require('fs');
 const path = require('path');
 
 const modFolder = 'http://localhost:3000/modules/';
-const relToSrc = '../public/modules/';
+let cats = [];
 // should be the absolute path to the working directory
 const normDir = __dirname.replace(/[\\]/g,'/') + '/'; // fixes Window's backslash fetish
 
 const getContent = function(modPath, subPath) {
 
-    // console.log(modPath);
+    // console.log(path.dirname(modPath) + '/' + path.basename(modPath));
     // console.log(normDir);
     var modsHtml = '<ul>';
-    var catHtml = '<ul>';
+    var catHtml = '';
     var bookHtml = '<ul>';
 
     var mods = [];
-    var cats = [];
     var books = [];
+    var cats = [];
 
     fs.readdirSync(normDir +'/' + modPath, {withFileTypes: true }).filter((dirent) => {
         // console.log(dirent.name);
@@ -43,8 +43,7 @@ const getContent = function(modPath, subPath) {
     modsHtml += getFiles(mods,'index.html', subPath); 
     modsHtml += '</ul>';
 
-    catHtml += getFiles(cats,'', subPath); 
-    catHtml += '</ul>';
+    catHtml += getCats('../public/modules/'); 
 
     bookHtml += getFiles(books,'.ibooks',subPath);
     bookHtml += '</ul>';
@@ -75,6 +74,31 @@ function getFiles(directory, entryPoint, subPath) {
         }
     });
 
+    return out;
+}
+
+function getCats(pathTo) { // poll modules directory for modules and categories
+    let out = '<ul>';
+    var sumPath = normDir + path.dirname(pathTo) + '/' + path.basename(pathTo);
+    var folders = fs.readdirSync(sumPath, {withFileTypes: true});
+        
+    folders.forEach((file) => {
+        if (file.isDirectory() && path.basename(pathTo) === 'modules' ) {
+           out += `<li><a href="/picker?folder=${file.name}">${file.name}</a></li>`
+        }
+        // else if (file.isDirectory) {
+        //     out = '<ul id="innerDir">';
+        //     out += '<script>function setVis(){'
+        //     out += 'var vis = document.getElementById("innerDir").innerHTML.visible;'
+        //     out += 'if (vis) { vis = false}'
+        //     out +=' else {vis = true}}</script>';
+        //     out += `<li><a href="/picker?folder=${pathTo}/${file.name}" onclick="setVis();">`;
+        //     out == `${file.name}</a></li>`;
+        //     out += getCats(path.dirname(pathTo + '/' + file.name));
+        //     ;
+        // }
+    });
+    out += '</ul>'
     return out;
 }
 

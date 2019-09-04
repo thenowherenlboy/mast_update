@@ -37,15 +37,26 @@
   padding: 15px;
   width:33%;
   display:table;
-  text-align: left
+  text-align: left;
+  overflow-x: wrap;
+}
+@media only screen and (min-width:769px) {
+    li, p {
+        font-size: 12pt;
+    }
 }
 
 @media only screen and (max-width: 768px) {
    #container [class*="col-"] {
         width: 100%;
+        max-height: 20%;
+        overflow-y: scroll;
+    }
+    li, p {
+        font-size: 20px;
     }
 }
 
-#container [class*="col-"] ul, ol {
+/* #container [class*="col-"] ul, ol {
   list-style-type: none;
-}
+} */

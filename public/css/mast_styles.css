@@ -20,6 +20,9 @@ h1 {
     font: 20pt/1.2 normal Helvetica,Verdana,Arial,sans-serif;
     text-align: left
 }
+@media only screen and (max-width:768px) {
+    h1{font: bold 10px/0.5;}
+}
 
 footer {
     padding-top:10px;
