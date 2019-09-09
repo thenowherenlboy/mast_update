@@ -8,8 +8,6 @@ const normDir = __dirname.replace(/[\\]/g,'/') + '/'; // fixes Window's backslas
 
 const getContent = function(modPath, subPath) {
 
-    // console.log(path.dirname(modPath) + '/' + path.basename(modPath));
-    // console.log(normDir);
     var modsHtml = '<ul>';
     var catHtml = '';
     var bookHtml = '<ul>';
@@ -57,7 +55,7 @@ const getContent = function(modPath, subPath) {
 };
 
 
-function getFiles(directory, entryPoint, subPath) {
+function getFiles(directory, entryPoint, subPath) { // this help function populates the HTML for each of the output columns
     let out = '';  
     let outPath = ''; 
 
@@ -77,7 +75,7 @@ function getFiles(directory, entryPoint, subPath) {
     return out;
 }
 
-function getCats(pathTo) { // poll modules directory for modules and categories
+function getCats(pathTo) { // this function polls modules directory for modules and categories
     let out = '<ul>';
     var sumPath = normDir + path.dirname(pathTo) + '/' + path.basename(pathTo);
     var folders = fs.readdirSync(sumPath, {withFileTypes: true});
