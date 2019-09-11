@@ -30,7 +30,6 @@ const getContent = function(modPath, subPath) {
         }
     });
 
-
     // when dealing with an http server, the developer must remember there are
     // "two" root directories, the actual project root (e.g. \Mast_update\) and the
     // client facing root (\Mast_upadate\public\) from where assets are consumed
@@ -60,6 +59,7 @@ function getFiles(directory, entryPoint, subPath) { // this help function popula
     let outPath = ''; 
 
     directory.forEach((file) => {
+        outPath = '';
         if(entryPoint === 'index.html') {
             outPath += modFolder + subPath + path.posix.basename(file);
             outPath = outPath.replace(/\s/g,'%20');
