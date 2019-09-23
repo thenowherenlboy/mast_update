@@ -12,7 +12,7 @@ function setContents(directory) {
     fs.readdir(directory, {withFileTypes: true},(file) => {
         if(file.isDirectory()) {
            if(isModuleDirectory(file)) {
-               moduleContents.push(directory.name)
+               moduleContents.push(directory.name);
            }
         }
     });
