@@ -41,7 +41,7 @@ const getContent = function(modPath, subPath) {
     modsHtml += '</ul>';
 
     catHtml += getCats('../public/modules/'); 
-
+    
     bookHtml += getFiles(books,'.ibooks',subPath);
     bookHtml += '</ul>';
 
@@ -96,6 +96,7 @@ function getCats(pathTo) { // this function polls modules directory for modules 
         //     ;
         // }
     });
+    out += '<li><a href="../picker">&larr;Module Home</a></li>'
     out += '</ul>'
     return out;
 }
