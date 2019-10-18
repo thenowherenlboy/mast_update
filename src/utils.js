@@ -1,22 +1,27 @@
 const fs = require('fs');
 const path = require('path');
 
-const modFolder = 'http://localhost:3000/modules/';
-let cats = [];
+const modFolder = '/modules/';
+
+// data will be loaded to the page via the script below
+const htmlScript = '<script>\
+    \
+     </script>  ';
+
 // should be the absolute path to the working directory
 const normDir = __dirname.replace(/[\\]/g,'/') + '/'; // fixes Window's backslash fetish
 
 const getContent = function(modPath, subPath) {
 
-    var modsHtml = '<ul>';
-    var catHtml = '';
+    var modsHtml =  '<ul>';
+    var catHtml =  htmlScript + '';
     var bookHtml = '<ul>';
 
     var mods = [];
-    var books = [];
     var cats = [];
+    var books = [];
 
-    fs.readdirSync(normDir +'/' + modPath, {withFileTypes: true }).filter((dirent) => {
+    fs.readdirSync(modPath, {withFileTypes: true }).filter((dirent) => {
         // console.log(dirent.name);
         if(dirent.isDirectory()) {
            if(fs.existsSync(normDir + modPath + dirent.name + '/index.html')) {
@@ -40,7 +45,7 @@ const getContent = function(modPath, subPath) {
     modsHtml += getFiles(mods,'index.html', subPath); 
     modsHtml += '</ul>';
 
-    catHtml += getCats('../public/modules/'); 
+    catHtml += getCats('public/modules/'); 
     
     bookHtml += getFiles(books,'.ibooks',subPath);
     bookHtml += '</ul>';
@@ -77,26 +82,15 @@ function getFiles(directory, entryPoint, subPath) { // this help function popula
 
 function getCats(pathTo) { // this function polls modules directory for modules and categories
     let out = '<ul>';
-    var sumPath = normDir + path.dirname(pathTo) + '/' + path.basename(pathTo);
+    var sumPath = '/' + path.basename(pathTo); // path.dirname(pathTo) +
     var folders = fs.readdirSync(sumPath, {withFileTypes: true});
         
     folders.forEach((file) => {
         if (file.isDirectory() && path.basename(pathTo) === 'modules' ) {
-           out += `<li><a href="/picker?folder=${file.name}">${file.name}</a></li>`
+           out += `<li><a href="#" onclick="getSubs(\'${file.name}\')">${file.name}</a></li>`
         }
-        // else if (file.isDirectory) {
-        //     out = '<ul id="innerDir">';
-        //     out += '<script>function setVis(){'
-        //     out += 'var vis = document.getElementById("innerDir").innerHTML.visible;'
-        //     out += 'if (vis) { vis = false}'
-        //     out +=' else {vis = true}}</script>';
-        //     out += `<li><a href="/picker?folder=${pathTo}/${file.name}" onclick="setVis();">`;
-        //     out == `${file.name}</a></li>`;
-        //     out += getCats(path.dirname(pathTo + '/' + file.name));
-        //     ;
-        // }
     });
-    out += '<li><a href="../picker">&larr;Module Home</a></li>'
+    out += '<li><a href="#" onclick="getSubs(\'Module Selector\');">&larr;Module Home</a></li>'
     out += '</ul>'
     return out;
 }
