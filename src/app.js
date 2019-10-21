@@ -35,15 +35,8 @@ app.get('/picker', (req, res) => {
     var title;
     var content; 
 
-    if (!req.query.folder) {  // base module directory
-        content = getContent('/modules/','');
-        title = 'Module Selector';
-    }  else { 
-        var sub = req.query.folder;
-        title = sub.replace(/\//g,' ');
-        content = getContent('/' + sub + '/', sub + '/');
-       
-    } 
+    content = getContent('modules');
+    title = 'Module Selector';
 
     res.render('picker' , {
         title,

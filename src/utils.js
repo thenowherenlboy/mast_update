@@ -11,6 +11,8 @@ const htmlScript = '<script>\
 // should be the absolute path to the working directory
 const normDir = __dirname.replace(/[\\]/g,'/') + '/'; // fixes Window's backslash fetish
 
+
+
 const getContent = function(modPath, subPath) {
 
     var modsHtml =  '<ul>';
