@@ -21,6 +21,7 @@ hbs.registerPartials(partialsPath);
 // static files
 
 app.use(express.static('/public/'));
+app.use(express.static('/modules/'));
 // app.use(express.static(path.join(__dirname, 'public/')));
 
 // routes
@@ -35,9 +36,15 @@ app.get('/picker', (req, res) => {
     var title;
     var content; 
 
-    content = getContent('modules');
-    title = 'Module Selector';
-
+    if (!req.query.folder){ 
+        content = getContent('/modules','');
+        title = 'Module Selector';
+    } else {
+        var sub = req.query.folder;
+        title = sub // .replace(/\//g,' ');
+        content = getContent('modules/' + sub + '/', sub + '/');
+        
+    }
     res.render('picker' , {
         title,
         content
