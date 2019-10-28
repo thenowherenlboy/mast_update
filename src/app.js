@@ -10,7 +10,9 @@ const partialsPath = path.join(__dirname,'../routes/partials/');
 
 const app = express();
 
-app.use(cors());
+const modPath = path.join(__dirname,'../modules/');
+
+//app.use(cors());
 
 const port = process.env.PORT || 3000;
 
@@ -20,13 +22,17 @@ hbs.registerPartials(partialsPath);
 
 // static files
 
-app.use(express.static('/public/'));
-app.use(express.static('/modules/'));
-// app.use(express.static(path.join(__dirname, 'public/')));
+app.use(express.static(path.join(__dirname, '../public/')));
+
+app.use(express.static(modPath));
+
+// app.use(express.static());
+
 
 // routes
 
 app.get('/', (req, res) => {
+    console.log(modPath);
     res.render('index', {
         title: 'MAST Home'
     });
@@ -37,12 +43,12 @@ app.get('/picker', (req, res) => {
     var content; 
 
     if (!req.query.folder){ 
-        content = getContent('/modules','');
+        content = getContent(modPath,'');
         title = 'Module Selector';
     } else {
         var sub = req.query.folder;
         title = sub // .replace(/\//g,' ');
-        content = getContent('modules/' + sub + '/', sub + '/');
+        content = getContent(modPath + sub + '/', sub + '/');
         
     }
     res.render('picker' , {
@@ -71,6 +77,14 @@ app.get('/terms', (req, res) => {
 //         title: 'Site Map'
 //     });
 // });
+
+// app.get('/modules/*', (res, req) => {
+//     if(!res.headersSent) {
+//         console.log ('Headers not sent?');
+//         res.set('Content-Type','text/html');
+//     }
+// });
+
 
 app.listen(port, () => {
     console.log('Server up on port ' + port);

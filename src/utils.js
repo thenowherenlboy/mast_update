@@ -11,7 +11,7 @@ const htmlScript = '<script>\
 // should be the absolute path to the working directory
 
 const getContent = function(modPath, subPath) {
-    console.log(modPath);
+    //console.log(modPath);
 
 
     var modsHtml =  '<ul>';
@@ -23,7 +23,6 @@ const getContent = function(modPath, subPath) {
     var books = [];
 
     fs.readdirSync(modPath, {withFileTypes: true }).filter((dirent) => {
-        console.log(modPath + dirent.name);
         if(dirent.isDirectory()) {
            if(fs.existsSync(modPath + '/' + dirent.name + '/index.html')) {
                mods.push(dirent.name);
@@ -39,7 +38,7 @@ const getContent = function(modPath, subPath) {
     modsHtml += getFiles(mods,'index.html', subPath); 
     modsHtml += '</ul>';
 
-    catHtml += getCats('/modules'); 
+    catHtml += getCats(modFolder); 
     
     bookHtml += getFiles(books,'.ibooks',subPath);
     bookHtml += '</ul>';
@@ -60,12 +59,12 @@ function getFiles(directory, entryPoint, subPath) { // this help function popula
     directory.forEach((file) => {
         outPath = '';
         if(entryPoint === 'index.html') {
-            outPath += modFolder + path.win32.normalize(subPath) + path.posix.basename(file);
-            console.log(outPath);
+            outPath += path.win32.normalize(subPath) + path.posix.basename(file);
+            //console.log(outPath);
             //outPath = outPath.replace(/\s/g,'%20');
             out +=  `<li><a href="${outPath}/${entryPoint}">${path.posix.basename(file)}</a></li>`; 
         } else if (entryPoint === '.ibooks') {
-            outPath += modFolder + subPath + path.posix.basename(file);
+            outPath += subPath + path.posix.basename(file);
             out +=   `<li><a href="${outPath}.ibooks" download>${path.posix.basename(file)}</a></li>`;
         } else {
              out += `<li><a href="/picker?folder=${subPath}/${file}/">${file}</a></li> `;

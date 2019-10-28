@@ -1,0 +1,47 @@
+header {
+    min-height: 4em;
+    width: 80%;
+    margin: 0% auto 1% auto;
+    position: relative;
+    border-radius: 1em;
+    background-color: white;
+
+}
+
+a img {
+    text-decoration: none;
+    margin:0px;
+    padding:0px;
+}
+
+h1 {
+    text-align: center;
+    font-family: Helvetica,Verdana,Arial,sans-serif;
+    font-weight: 500;
+    vertical-align: center;
+}
+
+
+@media only screen and (max-width:768px) {
+   h1{font-size: 25px;}
+}
+
+@media only screen and (min-width: 769px) {
+    h1{font-size: 40px;}
+}
+
+#eculogo{
+    position: absolute;
+    top:5%;
+    left:2%;
+    height:50px;
+    width:100px;    
+}
+
+#work {
+    position: absolute;
+    left: 85%;
+    top:4%;    
+    width:100px;
+    height:50px;
+}
