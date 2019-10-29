@@ -21,27 +21,32 @@ h1 {
     vertical-align: center;
 }
 
-
-@media only screen and (max-width:768px) {
-   h1{font-size: 25px;}
-}
-
-@media only screen and (min-width: 769px) {
-    h1{font-size: 40px;}
-}
-
 #eculogo{
     position: absolute;
     top:5%;
     left:2%;
-    height:50px;
-    width:100px;    
+    width: 115px;
+    height: 50px;    
 }
 
 #work {
     position: absolute;
-    left: 85%;
+    right: 5%;
     top:4%;    
     width:100px;
     height:50px;
+}
+
+
+@media only screen and (max-width:768px) {
+   h1{font-size: 25px;}
+   #eculogo, #work {
+       width:15%;
+       height:80%
+   }
+
+}
+
+@media only screen and (min-width: 769px) {
+    h1{font-size: 40px;}
 }

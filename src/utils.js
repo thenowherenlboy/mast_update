@@ -90,7 +90,7 @@ function getCats(pathTo) { // this function polls modules directory for modules 
            out += `<li><a href="/picker?folder=${file.name}" onclick="getSubs(\'${file.name}\')">${file.name}</a></li>`
         }
     });
-    out += '<li><a href="/picker" onclick="getSubs(\'Module Selector\');">&larr;Module Home</a></li>'
+    //out += '<li><a href="/picker" onclick="getSubs(\'Module Selector\');">&larr;Module Home</a></li>'
     out += '</ul>'
     return out;
 }
