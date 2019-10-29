@@ -10,9 +10,15 @@ const partialsPath = path.join(__dirname,'../routes/partials/');
 
 const app = express();
 
-const modPath = path.join(__dirname,'../modules/');
+var modPath = path.join(__dirname,'../modules/');
+if (process.platform === 'win32') {
+    modPath = path.win32.normalize(modPath);
+} else {
+    modPath = path.normalize(modPath);
+}
 
-//app.use(cors());
+
+//console.log(modPath);
 
 const port = process.env.PORT || 3000;
 

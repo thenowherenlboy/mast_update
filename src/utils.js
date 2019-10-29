@@ -1,7 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
-const modFolder = 'modules/';
+var modFolder = path.join(__dirname,'../modules/');
+if (process.platform === 'win32') {
+    modFolder = path.win32.normalize(modFolder);
+} else {
+    modFolder = path.normalize(modFolder);
+}
 
 // data will be loaded to the page via the script below
 const htmlScript = '<script>\
