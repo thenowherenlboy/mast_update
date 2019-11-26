@@ -1,3 +1,7 @@
+
+// this site uses the Express framework for route handling
+// and Handlebars for templating.
+
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
@@ -17,9 +21,6 @@ if (process.platform === 'win32') {
     modPath = path.normalize(modPath);
 }
 
-
-//console.log(modPath);
-
 const port = process.env.PORT || 3000;
 
 app.set('view engine', 'hbs');
@@ -32,11 +33,10 @@ app.use(express.static(path.join(__dirname, '../public/')));
 
 app.use(express.static(modPath));
 
-// app.use(express.static());
-
 
 // routes
 
+// Home page
 app.get('/', (req, res) => {
     console.log(modPath);
     res.render('index', {
@@ -44,6 +44,7 @@ app.get('/', (req, res) => {
     });
 });
 
+// Selection page
 app.get('/picker', (req, res) => {
     var title;
     var content; 
@@ -64,21 +65,26 @@ app.get('/picker', (req, res) => {
     
 });
 
+// About page
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About MAST'
     });
 });
 
+// TOS page
 app.get('/terms', (req, res) => {
     res.render('terms', {
         title: 'Terms of Use'
     });
 });
 
-// uh... need to work on the map page a bit :(
 
-// app.get('/map', (req, res) => {
+// Site map page may be added in the future if 
+// desired.
+
+/* 
+//app.get('/map', (req, res) => {
 //     res.render('map', {
 //         title: 'Site Map'
 //     });
@@ -89,8 +95,9 @@ app.get('/terms', (req, res) => {
 //         console.log ('Headers not sent?');
 //         res.set('Content-Type','text/html');
 //     }
-// });
+// }); 
 
+*/
 
 app.listen(port, () => {
     console.log('Server up on port ' + port);

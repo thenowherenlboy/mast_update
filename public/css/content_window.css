@@ -74,6 +74,10 @@ li a:hover, a:active  {
 }
 
 @media only screen and (max-width: 768px) {
+    img {
+        width: 90%;
+        height: 40%;
+    }
    #container [class*="col-"] {
         width: 100%;
     }

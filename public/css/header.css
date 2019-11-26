@@ -19,6 +19,9 @@ h1 {
     font-family: Helvetica,Verdana,Arial,sans-serif;
     font-weight: 500;
     vertical-align: center;
+    height: auto;
+    width: 50%;
+    margin-left: 25%;
 }
 
 #eculogo{
@@ -39,7 +42,10 @@ h1 {
 
 
 @media only screen and (max-width:768px) {
-   h1{font-size: 25px;}
+   h1{
+        font-size: 25px;
+        height: auto;
+    }
    #eculogo, #work {
        width:15%;
        height:80%

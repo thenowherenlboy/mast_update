@@ -1,3 +1,6 @@
+// this file is not in use in production. The developer was attempting to make the site more 'asynchronous'
+
+
 const fs = require('fs');
 const path = require('path');
 

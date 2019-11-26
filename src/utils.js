@@ -1,3 +1,6 @@
+// Main functionality file. This polls the Categories subdirectories for Adobe® Captivate modules 
+// (The module name will be the name of the directory that contains the module.)
+
 const fs = require('fs');
 const path = require('path');
 
