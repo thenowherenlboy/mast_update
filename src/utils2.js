@@ -1,12 +1,18 @@
-// this file is not in use in production. The developer was attempting to make the site more 'asynchronous'
+/* this file is not in use in production. The developer was attempting to make the site more 'asynchronous'
 
+    The idea here is to attempt to front-load all the directory and module information into a client-
+    side Javascript object so that the page will not have to reload every time a category is selected. By 
+    doing this the content on the page itself could update dynamically without needing to communicate with the 
+    server.
 
+*/
 const fs = require('fs');
 const path = require('path');
 
 const modFolder = '/modules/';
 
 // data will be loaded to the page via the script below
+// the backslashes are for multiline string definitions
 const htmlScript = '<script>\
     \
      </script>  ';
