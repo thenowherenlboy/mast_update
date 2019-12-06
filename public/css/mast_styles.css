@@ -6,14 +6,8 @@ body {
     background: url("../img/colorsBg.png");
 }
 body div#super {
-    border-radius: 1em;
-    background-image: url("../img/pirateship_sketch.jpeg");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-image: url("..img/colorsBg.png");
     width:95%;
-    margin: 2% auto;
-    padding: 1%;
 }
 
 h1 {
