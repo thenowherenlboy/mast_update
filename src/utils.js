@@ -13,7 +13,19 @@ if (process.platform === 'win32') {
 
 // data will be loaded to the page via the script below
 const htmlScript = '<script>\
-    \
+  function getSubs() { \
+    //alert("why do you suck? " + mod) \
+    var title = document.getElementById("sumid").innerHTML; \
+    var listItems = document.getElementsByTagName("a"); \
+    var listItem; \
+    listItems.forEach((element) => { \
+        if (element.innerHTML === title) { \
+            listItem = element; \
+        } \
+    }); \
+    listItem.style.fontWeight = "800"; \
+    listItem.style.color = "blue"; \
+}\
      </script>  ';
 
 // should be the absolute path to the working directory
@@ -33,8 +45,10 @@ const getContent = function(modPath, subPath) {
     fs.readdirSync(modPath, {withFileTypes: true }).filter((dirent) => {
         if(dirent.isDirectory()) {
            if(fs.existsSync(modPath + '/' + dirent.name + '/index.html')) {
+               console.log(modPath);
+               console.log(modFolder);
                mods.push(dirent.name);
-           } else {
+           } else if (modPath !== modFolder) {
                cats.push(dirent.name);
            }
         } else if ((path.extname(dirent.name)) === '.ibooks') {
@@ -44,7 +58,7 @@ const getContent = function(modPath, subPath) {
     });
 
     modsHtml += getFiles(mods,'index.html', subPath); 
-    modsHtml += '</ul>';
+    modsHtml += '</ul><script>getSubs();</script>';
 
     catHtml += getCats(modFolder); 
     
@@ -68,14 +82,13 @@ function getFiles(directory, entryPoint, subPath) { // this help function popula
         outPath = '';
         if(entryPoint === 'index.html') {
             outPath += path.win32.normalize(subPath) + path.posix.basename(file);
-            //console.log(outPath);
-            //outPath = outPath.replace(/\s/g,'%20');
+            if (outPath.charAt(0) === '.') {
+                outPath = outPath.substr(1, (outPath.length - 1));
+            }
             out +=  `<li><a href="${outPath}/${entryPoint}">${path.posix.basename(file)}</a></li>`; 
         } else if (entryPoint === '.ibooks') {
             outPath += subPath + path.posix.basename(file);
             out +=   `<li><a href="${outPath}.ibooks" download>${path.posix.basename(file)}</a></li>`;
-        } else {
-             out += `<li><a href="/picker?folder=${subPath}/${file}/">${file}</a></li> `;
         }
     });
 
@@ -90,7 +103,7 @@ function getCats(pathTo) { // this function polls modules directory for modules 
         
     folders.forEach((file) => {
         if (file.isDirectory() && path.basename(pathTo) === 'modules' ) {
-           out += `<li><a href="/picker?folder=${file.name}" onclick="getSubs(\'${file.name}\')">${file.name}</a></li>`
+           out += `<li><a href="/picker?folder=${file.name}">${file.name}</a></li>`
         }
     });
     //out += '<li><a href="/picker" onclick="getSubs(\'Module Selector\');">&larr;Module Home</a></li>'

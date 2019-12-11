@@ -54,7 +54,8 @@ app.get('/picker', (req, res) => {
         title = 'Module Selector';
     } else {
         var sub = req.query.folder;
-        title = sub // .replace(/\//g,' ');
+        title = sub; // .replace(/\//g,' ');
+        
         content = getContent(modPath + sub + '/', sub + '/');
         
     }

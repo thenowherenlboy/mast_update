@@ -4,9 +4,16 @@ function doSomthing() {
     alert('this is a song about a whale!');
 }
 
-function getSubs(mod) {
+function getSubs() {
     //alert("why do you suck? " + mod)
-    document.getElementById("sumid").innerHTML = mod;
-    var x = document.getElementsByClassName("col-2").innerHTML = mod;
-    // x.appendChild(mod);
+    var title = document.getElementById("sumid").innerHTML;
+    var listItems = document.getElementsByTagName("a");
+    var listItem;
+    for (item in listItems) {
+        if (listItems[item].innerText === title) {
+            listItem = listItems[item];
+        }
+    }
+    listItem.style.fontWeight = "800";
+    listItem.style.color = "blue";
 }
